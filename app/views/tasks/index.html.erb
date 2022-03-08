@@ -1,3 +1,43 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add a task
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/insert_task" method="post">
+          <div>
+            <label for="body_box" class="form-label">
+              Body
+            </label>
+
+            <textarea id="body_box" class="form-control" name="query_body" rows="3"></textarea>
+          </div>
+
+          <div>
+            <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @current_user.id %>">
+          </div>
+
+          <button class="btn btn-outline-success">
+            Create task
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div>
   <div>
     <h1>
@@ -13,24 +53,6 @@
     <h2>
       Add a new task
     </h2>
-
-    <form action="/insert_task" method="post">
-      <div>
-        <label for="body_box">
-          Body
-        </label>
-
-        <textarea id="body_box" name="query_body" rows="3"></textarea>
-      </div>
-
-      <div>
-        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @current_user.id %>">
-      </div>
-
-      <button>
-        Create task
-      </button>
-    </form>
   </div>
 </div>
 
