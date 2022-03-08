@@ -1,128 +1,117 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Add a task
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a task</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="container">
+    
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    
+    <div class="col-md-6">
+      
+      <div>
+        <div>
+          <h1>
+            List of all tasks
+          </h1>
+        </div>
       </div>
-      <div class="modal-body">
-        <form action="/insert_task" method="post">
-          <div>
-            <label for="body_box" class="form-label">
-              Body
-            </label>
-
-            <textarea id="body_box" class="form-control" name="query_body" rows="3"></textarea>
-          </div>
-
-          <div>
-            <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @current_user.id %>">
-          </div>
-
-          <button class="btn btn-outline-success">
-            Create task
-          </button>
-        </form>
+      <hr>
+      <div>
+        <div>
+          <h2>
+            Add a new task
+          </h2>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <hr>
+      <div>
+        <div>
+          <table border="1">
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Body
+              </th>
+              <th>
+                User
+              </th>
+              <th>
+                Status
+              </th>
+              <th>
+                Created at
+              </th>
+              <th>
+                Updated at
+              </th>
+              <th>
+              </th>
+            </tr>
+            <% @list_of_tasks.each do |a_task| %>
+              <tr>
+                <td>
+                  <%= a_task.id %>
+                </td>
+                <td>
+                  <%= a_task.body %>
+                </td>
+                <td>
+                  <%= a_task.user_id %>
+                </td>
+                <td>
+                  <%= a_task.status %>
+                </td>
+                <td>
+                  <%= time_ago_in_words(a_task.created_at) %> ago
+                </td>
+                <td>
+                  <%= time_ago_in_words(a_task.updated_at) %> ago
+                </td>
+                <td>
+                  <a href="/tasks/<%= a_task.id %>">
+                    Show details
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+  </div>
+  
+  <div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add a task
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a task</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/insert_task" method="post">
+              <div>
+                <label for="body_box" class="form-label">
+                  Body
+                </label>
+                <textarea id="body_box" class="form-control" name="query_body" rows="3"></textarea>
+              </div>
+              <div>
+                <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @current_user.id %>">
+              </div>
+              <button class="btn btn-outline-success">
+                Create task
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-<div>
-  <div>
-    <h1>
-      List of all tasks
-    </h1>
-  </div>
-</div>
-
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Add a new task
-    </h2>
-  </div>
-</div>
-
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Body
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Status
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_tasks.each do |a_task| %>
-      <tr>
-        <td>
-          <%= a_task.id %>
-        </td>
-
-        <td>
-          <%= a_task.body %>
-        </td>
-
-        <td>
-          <%= a_task.user_id %>
-        </td>
-
-        <td>
-          <%= a_task.status %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_task.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_task.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/tasks/<%= a_task.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>
+    <hr>
