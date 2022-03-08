@@ -45,7 +45,7 @@ class TasksController < ApplicationController
       the_task.save
       redirect_to("/tasks/#{the_task.id}", { :notice => "Task updated successfully."} )
     else
-      redirect_to("/tasks/#{the_task.id}", { :alert => task.errors.full_messages.to_sentence })
+      redirect_to("/tasks/#{the_task.id}", { :alert => the_task.errors.full_messages.to_sentence })
     end
   end
 
