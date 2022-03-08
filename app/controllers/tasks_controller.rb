@@ -29,7 +29,7 @@ class TasksController < ApplicationController
       the_task.save
       redirect_to("/tasks", { :notice => "Task created successfully." })
     else
-      redirect_to("/tasks", { :alert => task.errors.full_messages.to_sentence })
+      redirect_to("/tasks", { :alert => the_task.errors.full_messages.to_sentence })
     end
   end
 

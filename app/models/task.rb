@@ -10,4 +10,6 @@
 #  user_id    :integer
 #
 class Task < ApplicationRecord
+  belongs_to(:user)
+  validates(:body, { :presence => true })
 end
