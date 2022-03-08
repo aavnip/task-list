@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2022_03_08_144314) do
 
   create_table "tasks", force: :cascade do |t|
     t.text "body"
+    t.string "status", default: "not yet started"
     t.integer "user_id"
-    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
